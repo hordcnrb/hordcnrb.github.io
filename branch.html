@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Firebase Authentication</title>
+  <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="form">
+      <h2>Login</h2>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <button onclick="login()">Login</button>
+      <div id="errorMessage"></div>
+    </div>
+  </div>
+  <script>
+    const firebaseConfig = {
+  apiKey: "AIzaSyA7XRIIWZaWoK1dNVtaaTBCna4nqDszW00",
+  authDomain: "hord1-11455.firebaseapp.com",
+  databaseURL: "https://hord1-11455-default-rtdb.firebaseio.com",
+  projectId: "hord1-11455",
+  storageBucket: "hord1-11455.appspot.com",
+  messagingSenderId: "793882034504",
+  appId: "1:793882034504:web:425d20c508ee426360f37d",
+  measurementId: "G-YS99WT22ZH"
+};
+// Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    function login() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const errorMessageElement = document.getElementById('errorMessage');
+
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          // Successful login
+          console.log('Login successful:', userCredential.user);
+          // Redirect to the specified link
+          window.location.href = "https://hord.tiiny.site/index.html";
+        })
+        .catch((error) => {
+          // Handle errors
+          console.error('Login error:', error.code, error.message);
+          // Display an error message to the user
+          errorMessageElement.innerHTML = `Login error: ${error.message}`;
+          // Check for specific error codes and display custom messages
+          if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+            errorMessageElement.innerHTML = 'User ID or password is incorrect.';
+          }
+        });
+    }
+  </script>
+</body>
+</html>
