@@ -4,7 +4,7 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase
 import { getAuth, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
 
   // Your web app's Firebase configuration
-	// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+	// For Firebase JS SDK v7.20.0 and later
 const firebaseConfig = {
   apiKey: "AIzaSyA7XRIIWZaWoK1dNVtaaTBCna4nqDszW00",
   authDomain: "hord1-11455.firebaseapp.com",
