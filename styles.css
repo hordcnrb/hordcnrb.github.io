@@ -1,109 +1,66 @@
-/* Add some basic styles for the body */
+/* Add your custom styles here */
+
 body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
 }
 
-/* Add some styles for the container div */
-.container {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Add some styles for the center div */
-.center {
-  width: 400px;
-  height: 500px;
-  background-color: white;
-  border-radius: 10px;
+.wrapper {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Add some styles for the h1 element */
-h1 {
-  text-align: center;
-  color: #04AA6D;
-  margin-top: 50px;
-  margin-bottom: 30px;
-}
-
-/* Add some styles for the form element */
-form {
-  width: 80%;
-  margin: 0 auto;
-}
-
-/* Add some styles for the input elements */
-input {
-  width: 100%;
-  height: 40px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 20px;
-  outline: none;
-}
-
-/* Add some styles for the button element */
-button {
-  width: 100%;
-  height: 40px;
-  border: none;
-  border-radius: 5px;
-  background-color: #04AA6D;
-  color: white;
+header {
+  font-size: 24px;
   font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.styled-form {
+  /* Add your form styles here */
+}
+
+.form-section {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
 }
 
-/* Add some styles for the pass div */
-.pass {
-  text-align: right;
-  color: #04AA6D;
+button:hover {
+  background-color: #45a049;
 }
 
-/* Add some styles for the signup_link div */
-.signup_link {
-  text-align: center;
-  margin-top: 20px;
-}
-
-/* Add some styles for the a element */
-a {
-  color: #04AA6D;
-  text-decoration: none;
-}
-
-/* Add some hover effects for the input and button elements */
-input:hover, button:hover {
-  background-color: #f0f0f0;
-}
-
-/* Add some focus effects for the input and button elements */
-input:focus, button:focus {
-  background-color: #e0e0e0;
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Add some media queries for responsiveness */
-@media (max-width: 500px) {
-  .center {
-    width: 90%;
-    height: auto;
-  }
-
-  h1 {
-    font-size: 24px;
-    margin-top: 30px;
-    margin-bottom: 20px;
-  }
-
-  input, button {
-    height: 30px;
-  }
-}
+/* Add more styles as needed */
