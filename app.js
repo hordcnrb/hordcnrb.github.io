@@ -35,7 +35,7 @@ document.getElementById("login").addEventListener("click", function () {
       alert(user.email + " Login successfully!!!");
       document.getElementById('logout').style.display = 'block';
       // Redirect to http://hord.tiiny.site/
-      window.location.href = "https://hordcnrb.github.io/.html";
+      window.location.href = "https://hordcnrb.github.io/branch.html";
     })
     .catch((error) => {
       const errorMessage = error.message;
