@@ -1,25 +1,165 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Firebase Authentication</title>
-  <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.5.0/firebase-database.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Form</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <div class="container">
-    <div class="form">
-      <h2>Login</h2>
-      <input type="email" id="email" placeholder="Email" required>
-      <input type="password" id="password" placeholder="Password" required>
-      <button onclick="login()">Login</button>
-      <div id="errorMessage"></div>
-    </div>
+  <div class="wrapper">
+    <header>CANARA EASY FEE</header>
+
+   <form id="applicationForm">
+  <!-- Institution Details -->
+  <h2>Institution Details</h2>
+       <!-- New or Existing Customer -->
+ <div class="form-section">
+        <label for="customerType">New or Existing Customer:</label>
+        <select id="customerType" name="customerType" class="styled-input" onchange="toggleAccountNumberField()">
+          <option value="New">New Customer</option>
+          <option value="Existing">Existing Customer</option>
+        </select>
+      </div>
+       <!-- Account Number (visible when "Existing Customer" is selected) -->
+<div class="form-section" id="accountNumberSection" style="display:none;">
+  <label for="accountNumber">Account Number:</label>
+  <input type="text" id="accountNumber" name="accountNumber" class="styled-input">
+</div>
+ <label for="schoolName">1. Name of School/College:</label>
+<input type="text" id="school" name="schoolName">
+
+  <label for="tradingName"> 2. Constitution of applicant:</label>
+  <input type="text" id="trading" name="tradingName">
+
+
+  <label for="address">3. Address of Registered Office and Corporate Office:</label>
+  <textarea id="address" name="address" ></textarea>
+        <!-- 4. Number of Years of Existence -->
+  <label for="yearsOfExistence">4. Number of Years of Existence:</label>
+  <input type="number" id="yearsOfExistence" name="yearsOfExistence">
+
+  <!-- 5. GST Number -->
+  <label for="gstNumber">5. GST Number (if available):</label>
+  <input type="text" id="gstNumber" name="gstNumber">
+
+  <!-- 6. Number of Students Enrolled at Present -->
+  <label for="studentsEnrolled">6. Number of Students Enrolled at Present:</label>
+  <input type="number" id="studentsEnrolled" name="studentsEnrolled">
+
+ <!-- 7. Frequency of Fees/Transaction -->
+<label for="feeFrequency">7. Frequency of Fees/Transaction:</label>
+<select id="feeFrequency" name="feeFrequency">
+  <option value="Monthly">Monthly</option>
+  <option value="Quarterly">Quarterly</option>
+  <option value="HalfYearly">Half Yearly</option>
+  <option value="Yearly">Yearly</option>
+</select>
+
+  <!-- 8. Present Arrangement of Fees -->
+  <label for="feeArrangement">8. Present Arrangement of Fees:</label>
+  <textarea id="feeArrangement" name="feeArrangement"></textarea>
+
+  <!-- 9. Existing Business -->
+  <h3>7. Existing Business</h3>
+
+  <!-- Subheading Boxes -->
+  <label for="avgCasa">a. Avg CASA:</label>
+  <input type="text" id="avgCasa" name="avgCasa">
+
+  <label for="deposit">b. Deposit:</label>
+  <input type="text" id="deposit" name="deposit">
+
+  <label for="advances">c. Advances:</label>
+  <input type="text" id="advances" name="advances">
+
+  <label for="others1">d. Others:</label>
+  <input type="text" id="others1" name="others1">
+
+  <!-- 10. Additional Business -->
+  <h3>8. Additional Business</h3>
+
+  <!-- Subheading Boxes -->
+  <label for="avgCasaAdditional">a. Avg CASA:</label>
+  <input type="text" id="avgCasaAdditional" name="avgCasaAdditional">
+
+  <label for="depositAdditional">b. Deposit:</label>
+  <input type="text" id="depositAdditional" name="depositAdditional">
+
+  <label for="advancesAdditional">c. Advances:</label>
+  <input type="text" id="advancesAdditional" name="advancesAdditional">
+
+  <label for="others2">d. Others:</label>
+  <input type="text" id="others2" name="others2">
+       
+<!-- 5. Number of Expected New Enrollments -->
+<div class="form-section">
+  <label for="expectedEnrollments">5. Number of Expected New Enrollments:</label>
+  <input type="number" id="expectedEnrollments" name="expectedEnrollments" class="styled-input">
+</div>
+
+<!-- 6. Approximate Fee Collection during this FY -->
+<div class="form-section">
+  <label for="feeCollection">6. Approximate Fee Collection during this FY:</label>
+  <input type="text" id="feeCollection" name="feeCollection" class="styled-input">
+</div>
+
+<!-- 6. Whether requested for waiver or concession -->
+<div class="form-section">
+  <label for="waiverRequested">6. Whether requested for waiver or concession:</label>
+  <select id="waiverRequested" name="waiverRequested" class="styled-input">
+    <option value="No">No</option>
+    <option value="Yes">Yes</option>
+  </select>
+</div>
+
+<!-- 7. If yes, percentage of waiver requested -->
+<div class="form-section">
+  <label for="waiverPercentage">7. If yes, percentage of waiver requested:</label>
+  <input type="number" id="waiverPercentage" name="waiverPercentage" class="styled-input">
+</div>
+
+<!-- 8. Expected salary accounts of staff -->
+<div class="form-section">
+  <label for="salaryAccounts">8. Expected salary accounts of staff:</label>
+  <input type="text" id="salaryAccounts" name="salaryAccounts" class="styled-input">
+</div>
+
+<!-- 9. CIC Score -->
+<div class="form-section">
+  <label for="cicScore">9. CIC Score:</label>
+  <input type="number" id="cicScore" name="cicScore" class="styled-input">
+</div>
+
+<!-- 10. Rating score for Waiver -->
+<div class="form-section">
+  <label for="waiverRating">10. Rating score for Waiver:</label>
+  <input type="number" id="waiverRating" name="waiverRating" class="styled-input">
+</div>
+
+  <!-- Add more fields for Contact Details, Website, Date of Incorporation, PAN, etc. -->
+
+
+  <!-- Add more fields for other services -->
+  <label for="fileInput">Upload Supporting Document:</label>
+      <input type="file" id="fileInput" name="supportingDocument">
+  <button type="submit">Submit </button>
+</form>
+
   </div>
-  <script>
-    const firebaseConfig = {
+
+<script src=
+"https://www.gstatic.com/firebasejs/3.7.4/firebase.js">
+</script>
+
+
+<script>
+
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
   apiKey: "AIzaSyA7XRIIWZaWoK1dNVtaaTBCna4nqDszW00",
   authDomain: "hord1-11455.firebaseapp.com",
   databaseURL: "https://hord1-11455-default-rtdb.firebaseio.com",
@@ -29,31 +169,134 @@
   appId: "1:793882034504:web:425d20c508ee426360f37d",
   measurementId: "G-YS99WT22ZH"
 };
-// Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
 
-    function login() {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-      const errorMessageElement = document.getElementById('errorMessage');
+  // Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
-      firebase.auth().signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-          // Successful login
-          console.log('Login successful:', userCredential.user);
-          // Redirect to the specified link
-          window.location.href = "https://hord.tiiny.site/index.html";
-        })
-        .catch((error) => {
-          // Handle errors
-          console.error('Login error:', error.code, error.message);
-          // Display an error message to the user
-          errorMessageElement.innerHTML = `Login error: ${error.message}`;
-          // Check for specific error codes and display custom messages
-          if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
-            errorMessageElement.innerHTML = 'User ID or password is incorrect.';
-          }
-        });
+// Reference to the Firebase database for storing form data
+var messagesRef = firebase.database().ref('InstitutionForm');
+
+// Event listener for form submission
+document.getElementById('applicationForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    submitForm();
+});
+
+function submitForm() {
+    // Get form input values
+    var school = getInputVal('school');
+    var trading = getInputVal('trading');
+    var constitution = getSelectedCheckboxValues('constitution');
+    var address = getInputVal('address');
+    var incorporationDate = getInputVal('incorporationDate');
+    var yearsOfExistence = getInputVal('yearsOfExistence');
+    var gstNumber = getInputVal('gstNumber');
+    var studentsEnrolled = getInputVal('studentsEnrolled');
+    var feeFrequency = getInputVal('feeFrequency');
+    var feeArrangement = getInputVal('feeArrangement');
+    var avgCasa = getInputVal('avgCasa');
+    var deposit = getInputVal('deposit');
+    var advances = getInputVal('advances');
+    var others1 = getInputVal('others1');
+    var avgCasaAdditional = getInputVal('avgCasaAdditional');
+    var depositAdditional = getInputVal('depositAdditional');
+    var advancesAdditional = getInputVal('advancesAdditional');
+    var others2 = getInputVal('others2');
+    var expectedEnrollments = getInputVal('expectedEnrollments');
+    var waiverRequested = getInputVal('waiverRequested');
+    var waiverPercentage = getInputVal('waiverPercentage');
+    var feeCollection = getInputVal('feeCollection');
+    var cicScore = getInputVal('cicScore');
+    var salaryAccounts = getInputVal('salaryAccounts');
+    var waiverRating = getInputVal('waiverRating');
+
+    // Additional validation and processing as needed
+
+    // Check if a file is selected
+    var fileInput = document.getElementById('fileInput');
+    var supportingDocument = fileInput.files[0];
+
+    if (supportingDocument) {
+        // Check if the file size is less than 5MB
+        if (supportingDocument.size <= 5 * 1024 * 1024) {
+            // Generate a unique application number
+            var applicationNumber = generateApplicationNumber();
+
+            // Save form data to the Firebase database
+            saveMessage(
+                school,
+                trading,
+                constitution,
+                address,
+                incorporationDate,
+                yearsOfExistence,
+                gstNumber,
+                studentsEnrolled,
+                feeFrequency,
+                feeArrangement,
+                avgCasa,
+                deposit,
+                advances,
+                others1,
+                avgCasaAdditional,
+                depositAdditional,
+                advancesAdditional,
+                others2,
+                expectedEnrollments,
+                feeCollection,
+                waiverRequested,
+                waiverPercentage,
+                cicScore,
+                salaryAccounts,
+                waiverRating,
+                applicationNumber
+            );
+
+            // Save the file to Firebase Storage
+            saveFileToStorage(supportingDocument, applicationNumber);
+
+            // Display success message with application number
+            alert('Successfully submitted! Your application number is: ' + applicationNumber);
+
+            // Reset the form after submission
+            document.getElementById('applicationForm').reset();
+        } else {
+            // Display error message for exceeding file size limit
+            alert('Error: The selected file exceeds the maximum size of 5MB.');
+        }
+    } else {
+        // Display error message for not selecting a file
+        alert('Error: Please select a supporting document file.');
+    }
+}
+
+
+// Function to save the file to Firebase Storage
+function saveFileToStorage(file, applicationNumber) {
+  // Implement Firebase Storage functionality here
+}
+
+  // Function to save the file to Firebase Storage
+  function saveFileToStorage(file, applicationNumber) {
+    var storageRef = firebase.storage().ref();
+    var fileRef = storageRef.child('supportingDocuments/' + applicationNumber + '/' + file.name);
+
+    fileRef.put(file).then(function (snapshot) {
+      console.log('File uploaded successfully:', snapshot);
+    }).catch(function (error) {
+      console.error('Error uploading file:', error);
+    });
+  }
+
+ function toggleAccountNumberField() {
+      var customerType = document.getElementById('customerType');
+      var accountNumberSection = document.getElementById('accountNumberSection');
+
+      if (customerType.value === 'Existing') {
+        accountNumberSection.style.display = 'block';
+      } else {
+        accountNumberSection.style.display = 'none';
+      }
     }
   </script>
 </body>
