@@ -9,6 +9,13 @@
 
   <script src=
   "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    // Check if the user is authenticated
+firebase.auth().onAuthStateChanged(function(user) {
+  if (!user) {
+    // If user is not signed in, redirect to the login page
+    window.location.href = "https://hordcnrb.github.io/";
+  }
+});
   </script>
   
 </head>
