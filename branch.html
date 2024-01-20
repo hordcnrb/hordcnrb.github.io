@@ -15,7 +15,7 @@
 
 
 <body>
-<div id="contentWrapper" style="display: none;">
+<div id="app-container" style="display: none;">
     <header>CANARA EASY FEE</header>
 
    <form id="applicationForm">
@@ -336,33 +336,20 @@ const firebaseConfig = {
     // Update the 'fileName' property in the database
     applicationRef.update({
       fileName: fileName
+
+      // Check Firebase authentication state
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          // User is signed in, show the application content
+          document.getElementById('app-container').style.display = 'block';
+        } else {
+          // No user is signed in, hide the application content
+          document.getElementById('app-container').style.display = 'none';
+        }
+     
     });
 
     console.log('File name added to the database:', fileName);
-    <!-- Add this script to check Firebase authentication token -->
-<script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth.js"></script>
-
-
-  // Function to check Firebase authentication token
-  function checkFirebaseToken() {
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        // User is signed in, you can now display the authorized content
-        console.log('User is signed in:', user);
-        // Show the content of the web page
-        document.getElementById('contentWrapper').style.display = 'block';
-      } else {
-        // No user is signed in, hide the content and show an error or redirect to a login page
-        console.log('No user is signed in');
-        // Hide the content of the web page
-        document.getElementById('contentWrapper').style.display = 'none';
-        // Add your error display logic or redirect to login page
-      }
-    });
-  }
-
-  // Call the function to check Firebase authentication token on page load
-  checkFirebaseToken();
   }
 </script>
 </body>
