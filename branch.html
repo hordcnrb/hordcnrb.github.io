@@ -349,17 +349,6 @@ const firebaseConfig = {
       }
     });
 
-  window.onload = function () {
-    // Check if redirected from https://hordcnrb.github.io/
-    if (window.location.href === 'https://hordcnrb.github.io/') {
-      // Redirected from the specified URL, set display to yes
-      document.getElementById('app-container').style.display = 'block';
-    } else {
-      // Not redirected from the specified URL, set display to none
-      document.getElementById('app-container').style.display = 'none';
-    }
-  };
-
     console.log('File name added to the database:', fileName);
   }
 </script>
