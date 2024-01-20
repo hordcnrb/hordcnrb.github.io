@@ -44,6 +44,17 @@ document.getElementById("login").addEventListener("click", function () {
     });
 });
 //----- End
+// Check if the user is already authenticated
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in, redirect to branch.html
+    window.location.href = "https://hordcnrb.github.io/branch.html";
+  } else {
+    // User is not signed in, display the login form
+    // ... (Your existing login form display logic)
+  }
+});
+
 
 //----- Logout code start
 document.getElementById("logout").addEventListener("click", function () {
