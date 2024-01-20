@@ -341,6 +341,28 @@ const firebaseConfig = {
 
     console.log('File name added to the database:', fileName);
   }
+  <!-- Add this script to check Firebase authentication token -->
+<script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth.js"></script>
+
+
+  // Function to check Firebase authentication token
+  function checkFirebaseToken() {
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        // User is signed in, you can now display the authorized content
+        console.log('User is signed in:', user);
+        // Add your authorized content display logic here
+      } else {
+        // No user is signed in, show an error or redirect to a login page
+        console.log('No user is signed in');
+        // Add your error display logic or redirect to login page
+      }
+    });
+  }
+
+  // Call the function to check Firebase authentication token on page load
+  checkFirebaseToken();
+
 </script>
 </body>
 </html>
