@@ -1,28 +1,23 @@
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Form</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 
   <script src=
   "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-    // Check if the user is authenticated
-firebase.auth().onAuthStateChanged(function(user) {
-  if (!user) {
-    // If user is not signed in, redirect to the login page
-    window.location.href = "https://hordcnrb.github.io/";
-  }
-});
   </script>
+<link rel="stylesheet" href="styles.css">
   
 </head>
 
 
 <body>
-<div id="app-container">
+  <div class="wrapper">
     <header>CANARA EASY FEE</header>
 
    <form id="applicationForm">
@@ -44,8 +39,9 @@ firebase.auth().onAuthStateChanged(function(user) {
   <label for="schoolName">1. Name of School/College:</label>
   <input type="text" id="school" name="schoolName" required>
 
-  <label for="tradingName"> Constitution of applicant: (if different):</label>
+  <label for="tradingName">Constitution of applicant:</label>
   <input type="text" id="trading" name="tradingName">
+
 
 
   <label for="address">3. Address of Registered Office and Corporate Office:</label>
@@ -266,7 +262,7 @@ const firebaseConfig = {
     newMessageRef.set({
       school: school,
       accountNumber:accountNumber,
-      trading: trading,
+     Constitution: trading,
       address: address,
       yearsOfExistence:yearsOfExistence,
       gstNumber:gstNumber,
@@ -333,7 +329,7 @@ const firebaseConfig = {
     });
   }
 
-   // Function to update the database with the file name
+  // Function to update the database with the file name
   function updateDatabaseWithFileName(applicationNumber, fileName) {
     var messagesRef = firebase.database().ref('Contact form Data');
     var applicationRef = messagesRef.child(applicationNumber);
@@ -343,24 +339,8 @@ const firebaseConfig = {
       fileName: fileName
     });
 
-
     console.log('File name added to the database:', fileName);
   }
-  then((userCredential) => {
-  const user = userCredential.user;
-  console.log(user);
-  alert(user.email + " Login successfully!!!");
-
-  // Display the branch.html content in the app-container
-  loadBranchHtml();
-})
-  function loadBranchHtml() {
-  $.get("branch.html", function (data) {
-    $("#app-container").html(data);
-  });
-}
-
 </script>
-  </div>
 </body>
 </html>
