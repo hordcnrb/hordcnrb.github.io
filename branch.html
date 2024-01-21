@@ -363,7 +363,7 @@
 
     // Function to update the database with the file name
     function updateDatabaseWithFileName(applicationNumber, fileName) {
-      var messagesRef = firebase.database().ref('Contact form Data');
+      var messagesRef = firebase.database().ref('Institution Data');
       var applicationRef = messagesRef.child(applicationNumber);
 
       // Update the 'fileName' property in the database
