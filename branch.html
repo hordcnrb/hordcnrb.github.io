@@ -1,3 +1,4 @@
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -288,44 +289,26 @@ const firebaseConfig = {
     });
   }
 
-  // Function to save the file to Firebase Storage
-  function saveFileToStorage(file, applicationNumber) {
-    var storageRef = firebase.storage().ref();
-    var fileRef = storageRef.child('supportingDocuments/' + applicationNumber + '/' + file.name);
+// Function to save the file to Firebase Storage and update the database
+function saveFileToStorage(file, applicationNumber) {
+  var storageRef = firebase.storage().ref();
+  var fileRef = storageRef.child('supportingDocuments/' + applicationNumber + '/' + file.name);
 
-    fileRef.put(file).then(function (snapshot) {
-      console.log('File uploaded successfully:', snapshot);
+  fileRef.put(file).then(function (snapshot) {
+    console.log('File uploaded successfully:', snapshot);
+
+    // Get the file name
+    var fileName = file.name;
+
+    // Get the download URL of the uploaded file
+    fileRef.getDownloadURL().then(function (downloadURL) {
+      console.log('File download URL:', downloadURL);
+
+      // Now you can update the database with the file details
+      updateDatabaseWithFileDetails(applicationNumber, fileName, downloadURL);
     }).catch(function (error) {
-      console.error('Error uploading file:', error);
+      console.error('Error getting download URL:', error);
     });
-  }
-  function toggleAccountNumberField() {
-    var customerType = document.getElementById('customerType');
-    var accountNumberSection = document.getElementById('accountNumberSection');
-
-    // Check if the selected customer type is "Existing Customer"
-    if (customerType.value === 'Existing') {
-      // Show the "Account Number" field
-      accountNumberSection.style.display = 'block';
-    } else {
-      // Hide the "Account Number" field
-      accountNumberSection.style.display = 'none';
-    }
-  }
-  // Function to save the file to Firebase Storage and update the database
-  function saveFileToStorage(file, applicationNumber) {
-    var storageRef = firebase.storage().ref();
-    var fileRef = storageRef.child('supportingDocuments/' + applicationNumber + '/' + file.name);
-
-    fileRef.put(file).then(function (snapshot) {
-      console.log('File uploaded successfully:', snapshot);
-      
-
-      // Get the file name
-      var fileName = file.name;
-      
-// Update the database with the file name and file download URL
-    updateDatabaseWithFileDetails(applicationNumber, fileName, snapshot.ref.fullPath);
   }).catch(function (error) {
     console.error('Error uploading file:', error);
   });
