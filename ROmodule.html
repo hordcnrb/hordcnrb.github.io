@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>CANARA EASY FEE</h1>
+  <div class="wrapper">
+    <div class="form-container" id="applicationListContainer">
+      <!-- Table content will be added dynamically -->
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+      // Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyA7XRIIWZaWoK1dNVtaaTBCna4nqDszW00",
+        authDomain: "hord1-11455.firebaseapp.com",
+        databaseURL: "https://hord1-11455-default-rtdb.firebaseio.com",
+        projectId: "hord1-11455",
+        storageBucket: "hord1-11455.appspot.com",
+        messagingSenderId: "793882034504",
+        appId: "1:793882034504:web:425d20c508ee426360f37d",
+        measurementId: "G-YS99WT22ZH"
+      };
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+
+      // Reference to the 'Institution Form' node in the database
+      var database = firebase.database().ref().child('Institution Data');
+
+      // Fetch data from Firebase and populate the table
+      database.once('value', function(snapshot){
+        if(snapshot.exists()){
+          var tableContent = '<table>';
+          tableContent += '<tr><th>Application Number</th><th>Institution Name</th><th>Action</th></tr>';
+
+          snapshot.forEach(function(data){
+            var applicationNumber = data.val().applicationNumber;
+            var schoolName = data.val().schoolName;
+
+            // Check if applicationNumber and schoolName are defined
+            if (applicationNumber && schoolName) {
+              // Build the table row dynamically
+              tableContent += '<tr>';
+              tableContent += '<td>' + applicationNumber + '</td>';
+              tableContent += '<td>' + schoolName + '</td>';
+              tableContent += '<td><button onclick="viewDetails(\'' + applicationNumber + '\', \'' + schoolName + '\')">View</button></td>';
+              tableContent += '</tr>';
+            }
+          });
+
+          tableContent += '</table>';
+
+          // Append the table content to the form container
+          $('.form-container').html(tableContent);
+        }
+      });
+
+      // Function to handle the "View" button click
+      function viewDetails(applicationNumber, schoolName) {
+        // Retrieve the details based on applicationNumber and schoolName
+        var detailsRef = firebase.database().ref().child('Institution Data').orderByChild('applicationNumber').equalTo(applicationNumber);
+
+        detailsRef.once('value', function(detailsSnapshot) {
+          if (detailsSnapshot.exists()) {
+            var details = detailsSnapshot.val();
+
+            // Hide the existing table content
+            $('.form-container').html('');
+
+            // Extract details from the snapshot
+           // Extract the address and yearsOfExistence from details
+            var address = details[Object.keys(details)[0]].address;
+            var yearsOfExistence = details[Object.keys(details)[0]].yearsOfExistence;
+            var gstNumber = details[Object.keys(details)[0]].gstNumber;
+            var studentsEnrolled = details[Object.keys(details)[0]].studentsEnrolled;
+var feeFrequency = details[Object.keys(details)[0]].feeFrequency;
+var feeArrangement = details[Object.keys(details)[0]].feeArrangement;
+var avgCasa = details[Object.keys(details)[0]].avgCasa;
+var deposit = details[Object.keys(details)[0]].deposit;
+var advances = details[Object.keys(details)[0]].advances;
+var others1 = details[Object.keys(details)[0]].others1;
+var avgCasaAdditional = details[Object.keys(details)[0]].avgCasaAdditional;
+var depositAdditional = details[Object.keys(details)[0]].depositAdditional;
+var advancesAdditional = details[Object.keys(details)[0]].advancesAdditional;
+var others2 = details[Object.keys(details)[0]].others2;
+var expectedEnrollments = details[Object.keys(details)[0]].expectedEnrollments;
+var feeCollection = details[Object.keys(details)[0]].feeCollection;
+var waiverRequested = details[Object.keys(details)[0]].waiverRequested;
+var cicScore = details[Object.keys(details)[0]].cicScore;
+var salaryAccounts = details[Object.keys(details)[0]].salaryAccounts;
+var waiverRating = details[Object.keys(details)[0]].waiverRating;
+var applicationNumber = details[Object.keys(details)[0]].applicationNumber;
+
+
+
+          
+           // Display the details with specific field names
+            var detailsContent = '<div>';
+            detailsContent += '<p><strong>Application Number:</strong> ' + applicationNumber + '</p>';
+            detailsContent += '<p><strong>Institution Name:</strong> ' + schoolName + '</p>';
+            detailsContent += '<p><strong>Address:</strong> ' + address + '</p>';
+            detailsContent += '<p><strong>Years of Existence:</strong> ' + yearsOfExistence + '</p>';
+            detailsContent += '<p><strong>GST Number:</strong> ' + gstNumber + '</p>';
+detailsContent += '<p><strong>Students Enrolled:</strong> ' + studentsEnrolled + '</p>';
+detailsContent += '<p><strong>Fee Frequency:</strong> ' + feeFrequency + '</p>';
+detailsContent += '<p><strong>Fee Arrangement:</strong> ' + feeArrangement + '</p>';
+detailsContent += '<p><strong>Average CASA:</strong> ' + avgCasa + '</p>';
+detailsContent += '<p><strong>Deposit:</strong> ' + deposit + '</p>';
+detailsContent += '<p><strong>Advances:</strong> ' + advances + '</p>';
+detailsContent += '<p><strong>Others 1:</strong> ' + others1 + '</p>';
+detailsContent += '<p><strong>Average CASA Additional:</strong> ' + avgCasaAdditional + '</p>';
+detailsContent += '<p><strong>Deposit Additional:</strong> ' + depositAdditional + '</p>';
+detailsContent += '<p><strong>Advances Additional:</strong> ' + advancesAdditional + '</p>';
+detailsContent += '<p><strong>Others 2:</strong> ' + others2 + '</p>';
+detailsContent += '<p><strong>Expected Enrollments:</strong> ' + expectedEnrollments + '</p>';
+detailsContent += '<p><strong>Fee Collection:</strong> ' + feeCollection + '</p>';
+detailsContent += '<p><strong>Waiver Requested:</strong> ' + waiverRequested + '</p>';
+detailsContent += '<p><strong>CIC Score:</strong> ' + cicScore + '</p>';
+detailsContent += '<p><strong>Waiver Rating:</strong> ' + waiverRating + '</p>';
+detailsContent += '<p><strong>Expected Salary Accounts:</strong> ' + salaryAccounts + '</p>';
+
+            // Add "View Files" button
+            detailsContent += '<p><strong>View:</strong> <a id="fileLink" href="javascript:void(0);" onclick="viewApplication(\'' + applicationNumber + '\')">View File</a></p>';
+
+            // Recommendation and Remark input fields
+            detailsContent += '<label for="recommendation">Recommendation: </label>';
+            detailsContent += '<input type="text" id="recommendation" value="' + (details[Object.keys(details)[0]].recommendation || '') + '">'+'<br>';
+            detailsContent += '<label for="remark">Remark: </label>';
+            detailsContent += '<input type="text" id="remark" value="' + (details[Object.keys(details)[0]].remark || '') + '">'+'<br>';
+            detailsContent += '<button onclick="updateDetails(\'' + applicationNumber + '\', \'' + schoolName + '\')">Update</button>';
+            detailsContent += '</div>';
+
+            // Append the details content to the form container
+            $('.form-container').html(detailsContent);
+          } else {
+            // Application not found
+            $('.form-container').html('<p>Application not found</p>');
+          }
+        });
+      }
+
+      // Function to view the application and retrieve file URL
+      function viewApplication(applicationNumber) {
+        // Check if the application number is provided
+        if (applicationNumber) {
+          // Reference to the Firebase database for retrieving file URLs
+          var messagesRef = firebase.database().ref('Institution Data');
+
+          // Retrieve file URL from the database
+          messagesRef.child(applicationNumber).once('value').then(function(snapshot) {
+            var fileURL = snapshot.val() ? snapshot.val().fileURL : null;
+            var fileName = snapshot.val() ? snapshot.val().fileName : null;
+
+            // Display the file URL
+            if (fileURL) {
+              document.getElementById('fileLink').setAttribute('href', fileURL);
+              document.getElementById('fileLink').innerText = fileName;
+            } else {
+              alert('File URL not found for the given application number.');
+            }
+          }).catch(function(error) {
+            console.error('Error retrieving file URL:', error);
+          });
+        } else {
+          alert('Please enter an application number.');
+        }
+      }
+
+      function updateDetails(applicationNumber, schoolName) {
+        // Update details code...
+      }
+    </script>
+  </body>
+</html>
