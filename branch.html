@@ -190,6 +190,8 @@ const firebaseConfig = {
   function submitForm(e) {
     e.preventDefault();
 
+
+
     // Get form input values
     var schoolName = getInputVal('schoolName');
     var accountNumber = getInputVal('accountNumber');
@@ -317,29 +319,33 @@ const firebaseConfig = {
 
     fileRef.put(file).then(function (snapshot) {
       console.log('File uploaded successfully:', snapshot);
+      
 
       // Get the file name
       var fileName = file.name;
+      
+// Update the database with the file name and file download URL
+    updateDatabaseWithFileDetails(applicationNumber, fileName, snapshot.ref.fullPath);
+  }).catch(function (error) {
+    console.error('Error uploading file:', error);
+  });
+}
 
-      // Update the database with the file name
-      updateDatabaseWithFileName(applicationNumber, fileName);
-    }).catch(function (error) {
-      console.error('Error uploading file:', error);
-    });
-  }
+// Function to update the database with the file name and file download URL
+function updateDatabaseWithFileDetails(applicationNumber, fileName, fileDownloadURL) {
+  var messagesRef = firebase.database().ref('Institution Data');
+  var applicationRef = messagesRef.child(applicationNumber);
 
-  // Function to update the database with the file name
-  function updateDatabaseWithFileName(applicationNumber, fileName) {
-    var messagesRef = firebase.database().ref('Institution Data');
-    var applicationRef = messagesRef.child(applicationNumber);
+  // Update the 'fileName' and 'fileDownloadURL' properties in the database
+  applicationRef.update({
+    fileName: fileName,
+    fileDownloadURL: fileDownloadURL
+  });
 
-    // Update the 'fileName' property in the database
-    applicationRef.update({
-      fileName: fileName
-    });
+  console.log('File name and download URL added to the database:', fileName, fileDownloadURL);
+}
 
-    console.log('File name added to the database:', fileName);
-  }
+ 
 </script>
 </body>
 </html>
