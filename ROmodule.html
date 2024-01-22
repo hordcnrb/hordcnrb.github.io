@@ -142,33 +142,33 @@ detailsContent += '<p><strong>Expected Salary Accounts:</strong> ' + salaryAccou
           }
         });
       }
+// Function to view the application and retrieve file URL
+function viewApplication(applicationNumber) {
+  // Check if the application number is provided
+  if (applicationNumber) {
+    // Reference to the Firebase database for retrieving file URLs
+    var messagesRef = firebase.database().ref('Institution Data');
 
-      // Function to view the application and retrieve file URL
-      function viewApplication(applicationNumber) {
-        // Check if the application number is provided
-        if (applicationNumber) {
-          // Reference to the Firebase database for retrieving file URLs
-          var messagesRef = firebase.database().ref('Institution Data');
+    // Retrieve file URL from the database
+    messagesRef.child(applicationNumber).once('value').then(function(snapshot) {
+      var fileURL = snapshot.val() ? snapshot.val().fileDownloadURL : null;
+      var fileName = snapshot.val() ? snapshot.val().fileName : null;
 
-          // Retrieve file URL from the database
-          messagesRef.child(applicationNumber).once('value').then(function(snapshot) {
-            var fileURL = snapshot.val() ? snapshot.val().fileURL : null;
-            var fileName = snapshot.val() ? snapshot.val().fileName : null;
-
-            // Display the file URL
-            if (fileURL) {
-              document.getElementById('fileLink').setAttribute('href', fileURL);
-              document.getElementById('fileLink').innerText = fileName;
-            } else {
-              alert('File URL not found for the given application number.');
-            }
-          }).catch(function(error) {
-            console.error('Error retrieving file URL:', error);
-          });
-        } else {
-          alert('Please enter an application number.');
-        }
+      // Display the file URL
+      if (fileURL) {
+        // Open the file in a new tab or window
+        window.open(fileURL, '_blank');
+      } else {
+        alert('File URL not found for the given application number.');
       }
+    }).catch(function(error) {
+      console.error('Error retrieving file URL:', error);
+    });
+  } else {
+    alert('Please enter an application number.');
+  }
+}
+
 
       function updateDetails(applicationNumber, schoolName) {
         // Update details code...
