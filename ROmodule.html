@@ -39,15 +39,15 @@
 
           snapshot.forEach(function(data){
             var applicationNumber = data.val().applicationNumber;
-            var school = data.val().school;
+            var schoolName = data.val().schoolName;
 
-            // Check if applicationNumber and school are defined
-            if (applicationNumber && school) {
+            // Check if applicationNumber and schoolName are defined
+            if (applicationNumber && schoolName) {
               // Build the table row dynamically
               tableContent += '<tr>';
               tableContent += '<td>' + applicationNumber + '</td>';
-              tableContent += '<td>' + school + '</td>';
-              tableContent += '<td><button onclick="viewDetails(\'' + applicationNumber + '\', \'' + school + '\')">View</button></td>';
+              tableContent += '<td>' + schoolName + '</td>';
+              tableContent += '<td><button onclick="viewDetails(\'' + applicationNumber + '\', \'' + schoolName + '\')">View</button></td>';
               tableContent += '</tr>';
             }
           });
@@ -60,8 +60,8 @@
       });
 
       // Function to handle the "View" button click
-      function viewDetails(applicationNumber, school) {
-        // Retrieve the details based on applicationNumber and school
+      function viewDetails(applicationNumber, schoolName) {
+        // Retrieve the details based on applicationNumber and schoolName
         var detailsRef = firebase.database().ref().child('Institution Data').orderByChild('applicationNumber').equalTo(applicationNumber);
 
         detailsRef.once('value', function(detailsSnapshot) {
@@ -101,7 +101,7 @@ var applicationNumber = details[Object.keys(details)[0]].applicationNumber;
            // Display the details with specific field names
             var detailsContent = '<div>';
             detailsContent += '<p><strong>Application Number:</strong> ' + applicationNumber + '</p>';
-            detailsContent += '<p><strong>Institution Name:</strong> ' + school + '</p>';
+            detailsContent += '<p><strong>Institution Name:</strong> ' + schoolName + '</p>';
             detailsContent += '<p><strong>Address:</strong> ' + address + '</p>';
             detailsContent += '<p><strong>Years of Existence:</strong> ' + yearsOfExistence + '</p>';
             detailsContent += '<p><strong>GST Number:</strong> ' + gstNumber + '</p>';
@@ -131,7 +131,7 @@ detailsContent += '<p><strong>Expected Salary Accounts:</strong> ' + salaryAccou
             detailsContent += '<input type="text" id="recommendation" value="' + (details[Object.keys(details)[0]].recommendation || '') + '">'+'<br>';
             detailsContent += '<label for="remark">Remark: </label>';
             detailsContent += '<input type="text" id="remark" value="' + (details[Object.keys(details)[0]].remark || '') + '">'+'<br>';
-            detailsContent += '<button onclick="updateDetails(\'' + applicationNumber + '\', \'' + school + '\')">Update</button>';
+            detailsContent += '<button onclick="updateDetails(\'' + applicationNumber + '\', \'' + schoolName + '\')">Update</button>';
             detailsContent += '</div>';
 
             // Append the details content to the form container
@@ -170,7 +170,7 @@ detailsContent += '<p><strong>Expected Salary Accounts:</strong> ' + salaryAccou
         }
       }
 
-      function updateDetails(applicationNumber, school) {
+      function updateDetails(applicationNumber, schoolName) {
         // Update details code...
       }
     </script>
