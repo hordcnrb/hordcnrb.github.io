@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -174,5 +176,29 @@ function viewApplication(applicationNumber) {
         // Update details code...
       }
     </script>
+        <script>  function updateDetails(applicationNumber, schoolName) {
+  // Retrieve the updated recommendation and remark values
+  var updatedRecommendation = $('#recommendation').val();
+  var updatedRemark = $('#remark').val();
+
+  // Update the details in Firebase Realtime Database
+  var detailsRef = firebase.database().ref().child('Institution Data').orderByChild('applicationNumber').equalTo(applicationNumber);
+
+  detailsRef.once('value', function (detailsSnapshot) {
+    if (detailsSnapshot.exists()) {
+      var detailsKey = Object.keys(detailsSnapshot.val())[0];
+      
+      // Update the recommendation and remark fields
+      firebase.database().ref('Institution Data/' + detailsKey).update({
+        recommendation: updatedRecommendation,
+        remark: updatedRemark
+      });// Display a success message or perform further actions as needed
+      alert('Details updated successfully!');
+    } else {
+      // Application not found
+      alert('Application not found');
+    }
+  });
+}</script>
   </body>
 </html>
