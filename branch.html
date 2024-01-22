@@ -35,8 +35,8 @@
   <label for="accountNumber">Account Number:</label>
   <input type="text" id="accountNumber" name="accountNumber" class="styled-input">
 </div>
-  <label for="school">1. Name of School/College:</label>
-  <input type="text" id="school" name="school" required>
+  <label for="schoolName">1. Name of School/College:</label>
+  <input type="text" id="schoolName" name="schoolName" required>
 
   <label for="tradingName">Constitution of applicant::</label>
   <input type="text" id="trading" name="tradingName">
@@ -191,7 +191,7 @@ const firebaseConfig = {
     e.preventDefault();
 
     // Get form input values
-    var school = getInputVal('school');
+    var schoolName = getInputVal('schoolName');
     var accountNumber = getInputVal('accountNumber');
     var trading = getInputVal('trading');
     var address = getInputVal('address');
@@ -225,7 +225,7 @@ const firebaseConfig = {
         var applicationNumber = generateApplicationNumber();
 
         // Save form data to the Firebase database
-        saveMessage(school,accountNumber, trading, address,yearsOfExistence,gstNumber,studentsEnrolled,feeFrequency,feeArrangement,avgCasa,deposit,advances,others1,avgCasaAdditional,depositAdditional,others2,expectedEnrollments,feeCollection,waiverRequested,waiverPercentage,cicScore,salaryAccounts,waiverRating,applicationNumber);
+        saveMessage(schoolName,accountNumber, trading, address,yearsOfExistence,gstNumber,studentsEnrolled,feeFrequency,feeArrangement,avgCasa,deposit,advances,others1,avgCasaAdditional,depositAdditional,others2,expectedEnrollments,feeCollection,waiverRequested,waiverPercentage,cicScore,salaryAccounts,waiverRating,applicationNumber);
 
         // Save the file to Firebase Storage
         saveFileToStorage(supportingDocument, applicationNumber);
@@ -256,10 +256,10 @@ const firebaseConfig = {
   }
 
   // Function to save form data to the Firebase database
-  function saveMessage(school,accountNumber, trading, address,yearsOfExistence,gstNumber,studentsEnrolled,feeFrequency,feeArrangement,avgCasa,deposit,advances,others1,avgCasaAdditional,depositAdditional,others2,expectedEnrollments,feeCollection,waiverRequested,waiverPercentage,cicScore,salaryAccounts,waiverRating,applicationNumber) {
+  function saveMessage(schoolName,accountNumber, trading, address,yearsOfExistence,gstNumber,studentsEnrolled,feeFrequency,feeArrangement,avgCasa,deposit,advances,others1,avgCasaAdditional,depositAdditional,others2,expectedEnrollments,feeCollection,waiverRequested,waiverPercentage,cicScore,salaryAccounts,waiverRating,applicationNumber) {
     var newMessageRef = messagesRef.push();
     newMessageRef.set({
-      school: school,
+      schoolName: schoolName,
       accountNumber:accountNumber,
       trading: trading,
       address: address,
