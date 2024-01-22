@@ -1,60 +1,346 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <title>Canara Easy Fee</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Form</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+  <script src=
+  "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+  </script>
+<link rel="stylesheet" href="styles.css">
+  
 </head>
+
+
 <body>
-<div class="wrapper">
-<div class="navbar navbar-default">
-  <div class="navbar-header">
-    <a class="navbar-brand" href="https://hord.tiiny.site/">CANARA EASY FEE</a>
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-controls="navbar">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-  </div>
-  <div class="navbar-collapse collapse">
-    <ul class="nav navbar-nav navbar-right">
-      <li><a href="#" id="logout" style="display: none;">Log Out</a></li>
-    </ul>
-  </div>
+  <div class="wrapper">
+    <header>CANARA EASY FEE</header>
+
+   <form id="applicationForm">
+  <!-- Institution Details -->
+  <h2>Institution Details</h2>
+  <!-- New or Existing Customer -->
+ <div class="form-section">
+        <label for="customerType">New or Existing Customer:</label>
+        <select id="customerType" name="customerType" class="styled-input" onchange="toggleAccountNumberField()">
+          <option value="New">New Customer</option>
+          <option value="Existing">Existing Customer</option>
+        </select>
+      </div>
+        <!-- Account Number (visible when "Existing Customer" is selected) -->
+<div class="form-section" id="accountNumberSection" style="display:none;">
+  <label for="accountNumber">Account Number:</label>
+  <input type="text" id="accountNumber" name="accountNumber" class="styled-input">
 </div>
-<br>
+  <label for="schoolName">1. Name of School/College:</label>
+  <input type="text" id="school" name="schoolName" required>
 
-<form name="login_form" id="login_form" method="post" action="#" enctype="multipart/form-data">
-  <div class="col-sm-4">
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input type="text" name="login_email" id="login_email" class="form-control" placeholder="Enter your email">
-    </div>
+  <label for="tradingName">Trading Business Name (if different):</label>
+  <input type="text" id="trading" name="tradingName">
 
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" name="login_password" id="login_password" class="form-control" placeholder="Enter your password">
-    </div>
+  <label>2. Constitution of applicant:</label>
+  <!-- Add checkboxes for Constitution -->
 
-    <div class="form-group">
-      <label for="user_type">User Type</label>
-      <select name="user_type" id="user_type" class="form-control">
-        <option value="branch">Branch</option>
-        <option value="ro">RO</option>
-      </select>
-    </div>
+  <label for="address">3. Address of Registered Office and Corporate Office:</label>
+  <textarea id="address" name="address" required></textarea>
 
-    <button type="button" id="login" name="login" class="btn btn-success">Login</button>
-  </div><!-- end col -->
+  <!-- Add more fields for Contact Details, Website, Date of Incorporation, PAN, etc. -->
 
+  <!-- 4. Number of Years of Existence -->
+  <label for="yearsOfExistence">4. Number of Years of Existence:</label>
+  <input type="number" id="yearsOfExistence" name="yearsOfExistence">
+
+  <!-- 5. GST Number -->
+  <label for="gstNumber">5. GST Number (if available):</label>
+  <input type="text" id="gstNumber" name="gstNumber">
+
+  <!-- 6. Number of Students Enrolled at Present -->
+  <label for="studentsEnrolled">6. Number of Students Enrolled at Present:</label>
+  <input type="number" id="studentsEnrolled" name="studentsEnrolled">
+
+ <!-- 7. Frequency of Fees/Transaction -->
+<label for="feeFrequency">7. Frequency of Fees/Transaction:</label>
+<select id="feeFrequency" name="feeFrequency">
+  <option value="Monthly">Monthly</option>
+  <option value="Quarterly">Quarterly</option>
+  <option value="HalfYearly">Half Yearly</option>
+  <option value="Yearly">Yearly</option>
+</select>
+
+  <!-- 8. Present Arrangement of Fees -->
+  <label for="feeArrangement">8. Present Arrangement of Fees:</label>
+  <textarea id="feeArrangement" name="feeArrangement"></textarea>
+
+  <!-- 9. Existing Business -->
+  <h3>7. Existing Business</h3>
+
+  <!-- Subheading Boxes -->
+  <label for="avgCasa">a. Avg CASA:</label>
+  <input type="text" id="avgCasa" name="avgCasa">
+
+  <label for="deposit">b. Deposit:</label>
+  <input type="text" id="deposit" name="deposit">
+
+  <label for="advances">c. Advances:</label>
+  <input type="text" id="advances" name="advances">
+
+  <label for="others1">d. Others:</label>
+  <input type="text" id="others1" name="others1">
+
+  <!-- 10. Additional Business -->
+  <h3>8. Additional Business</h3>
+
+  <!-- Subheading Boxes -->
+  <label for="avgCasaAdditional">a. Avg CASA:</label>
+  <input type="text" id="avgCasaAdditional" name="avgCasaAdditional">
+
+  <label for="depositAdditional">b. Deposit:</label>
+  <input type="text" id="depositAdditional" name="depositAdditional">
+
+  <label for="advancesAdditional">c. Advances:</label>
+  <input type="text" id="advancesAdditional" name="advancesAdditional">
+
+  <label for="others2">d. Others:</label>
+  <input type="text" id="others2" name="others2">
+       
+<!-- 5. Number of Expected New Enrollments -->
+<div class="form-section">
+  <label for="expectedEnrollments">5. Number of Expected New Enrollments:</label>
+  <input type="number" id="expectedEnrollments" name="expectedEnrollments" class="styled-input">
+</div>
+
+<!-- 6. Approximate Fee Collection during this FY -->
+<div class="form-section">
+  <label for="feeCollection">6. Approximate Fee Collection during this FY:</label>
+  <input type="text" id="feeCollection" name="feeCollection" class="styled-input">
+</div>
+
+<!-- 6. Whether requested for waiver or concession -->
+<div class="form-section">
+  <label for="waiverRequested">6. Whether requested for waiver or concession:</label>
+  <select id="waiverRequested" name="waiverRequested" class="styled-input">
+    <option value="No">No</option>
+    <option value="Yes">Yes</option>
+  </select>
+</div>
+
+<!-- 7. If yes, percentage of waiver requested -->
+<div class="form-section">
+  <label for="waiverPercentage">7. If yes, percentage of waiver requested:</label>
+  <input type="number" id="waiverPercentage" name="waiverPercentage" class="styled-input">
+</div>
+
+<!-- 8. Expected salary accounts of staff -->
+<div class="form-section">
+  <label for="salaryAccounts">8. Expected salary accounts of staff:</label>
+  <input type="text" id="salaryAccounts" name="salaryAccounts" class="styled-input">
+</div>
+
+<!-- 9. CIC Score -->
+<div class="form-section">
+  <label for="cicScore">9. CIC Score:</label>
+  <input type="number" id="cicScore" name="cicScore" class="styled-input">
+</div>
+
+<!-- 10. Rating score for Waiver -->
+<div class="form-section">
+  <label for="waiverRating">10. Rating score for Waiver:</label>
+  <input type="number" id="waiverRating" name="waiverRating" class="styled-input">
+</div>
+
+  <!-- Add more fields for other services -->
+  <label for="fileInput">Upload Supporting Document:</label>
+      <input type="file" id="fileInput" name="supportingDocument">
+  <button type="submit">Submit </button>
 </form>
 
-<br>
-<center>Developed by <a href="https://hord.tiiny.site/">Athul Unni</a></center>
+  </div>
 
-<script type="module" src="app.js"></script>
+<script src=
+"https://www.gstatic.com/firebasejs/3.7.4/firebase.js">
+</script>
+
+
+<script>
+
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyA7XRIIWZaWoK1dNVtaaTBCna4nqDszW00",
+  authDomain: "hord1-11455.firebaseapp.com",
+  databaseURL: "https://hord1-11455-default-rtdb.firebaseio.com",
+  projectId: "hord1-11455",
+  storageBucket: "hord1-11455.appspot.com",
+  messagingSenderId: "793882034504",
+  appId: "1:793882034504:web:425d20c508ee426360f37d",
+  measurementId: "G-YS99WT22ZH"
+};
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  // Reference to the Firebase database for storing form data
+  var messagesRef = firebase.database().ref('Institution data');
+
+  // Event listener for form submission
+  document.getElementById('applicationForm').addEventListener('submit', submitForm);
+
+  // Function to handle form submission
+  function submitForm(e) {
+    e.preventDefault();
+
+    // Get form input values
+    var school = getInputVal('school');
+    var accountNumber = getInputVal('accountNumber');
+    var trading = getInputVal('trading');
+    var address = getInputVal('address');
+    var yearsOfExistence = getInputVal('yearsOfExistence');
+    var gstNumber = getInputVal('gstNumber');
+    var studentsEnrolled = getInputVal('studentsEnrolled');
+    var feeFrequency = getInputVal('feeFrequency');
+    var feeArrangement = getInputVal('feeArrangement');
+    var avgCasa = getInputVal('avgCasa');
+    var deposit = getInputVal('deposit');
+    var advances = getInputVal('advances');
+    var others1 = getInputVal('others1');
+    var avgCasaAdditional = getInputVal('avgCasaAdditional');
+    var depositAdditional = getInputVal('depositAdditional');
+    var advancesAdditional = getInputVal('advancesAdditional');
+    var others2 = getInputVal('others2');
+    var expectedEnrollments = getInputVal('expectedEnrollments');
+    var waiverRequested = getInputVal('waiverRequested');
+    var waiverPercentage = getInputVal('waiverPercentage');
+    var feeCollection = getInputVal('feeCollection');
+    var salaryAccounts = getInputVal('salaryAccounts');
+    var waiverRating = getInputVal('waiverRating');
+    var fileInput = document.getElementById('fileInput');
+    var supportingDocument = fileInput.files[0];
+
+    // Check if a file is selected
+    if (supportingDocument) {
+      // Check if the file size is less than 5MB
+      if (supportingDocument.size <= 5 * 1024 * 1024) {
+        // Generate a unique application number
+        var applicationNumber = generateApplicationNumber();
+
+        // Save form data to the Firebase database
+        saveMessage(school,accountNumber, trading, address,yearsOfExistence,gstNumber,studentsEnrolled,feeFrequency,feeArrangement,avgCasa,deposit,advances,others1,avgCasaAdditional,depositAdditional,others2,expectedEnrollments,feeCollection,waiverRequested,waiverPercentage,cicScore,salaryAccounts,waiverRating,applicationNumber);
+
+        // Save the file to Firebase Storage
+        saveFileToStorage(supportingDocument, applicationNumber);
+
+        // Display success message with application number
+        alert('Successfully submitted! Your application number is: ' + applicationNumber);
+
+        // Reset the form after submission
+        document.getElementById('applicationForm').reset();
+      } else {
+        // Display error message for exceeding file size limit
+        alert('Error: The selected file exceeds the maximum size of 5MB.');
+      }
+    } else {
+      // Display error message for not selecting a file
+      alert('Error: Please select a PDF file.');
+    }
+  }
+
+  // Function to generate a unique application number
+  function generateApplicationNumber() {
+    return 'APP' + Math.floor(Math.random() * 10000);
+  }
+
+  // Function to get input values by element ID
+  function getInputVal(id) {
+    return document.getElementById(id).value;
+  }
+
+  // Function to save form data to the Firebase database
+  function saveMessage(school,accountNumber, trading, address,yearsOfExistence,gstNumber,studentsEnrolled,feeFrequency,feeArrangement,avgCasa,deposit,advances,others1,avgCasaAdditional,depositAdditional,others2,expectedEnrollments,feeCollection,waiverRequested,waiverPercentage,cicScore,salaryAccounts,waiverRating,applicationNumber) {
+    var newMessageRef = messagesRef.push();
+    newMessageRef.set({
+      school: school,
+      accountNumber:accountNumber,
+      trading: trading,
+      address: address,
+      yearsOfExistence:yearsOfExistence,
+      gstNumber:gstNumber,
+      studentsEnrolled:studentsEnrolled,
+      feeFrequency:feeFrequency,
+      feeArrangement:feeArrangement,
+      avgCasa:avgCasa,
+      deposit:deposit,
+      advances:advances,
+      others1:others1,
+      avgCasaAdditional:avgCasaAdditional,
+      depositAdditional:depositAdditional,
+      advancesAdditional:advancesAdditional,
+      others2:others2,
+      expectedEnrollments:expectedEnrollments,
+      feeCollection:feeCollection,
+      waiverRequested:waiverRequested,
+      cicScore:cicScore,
+      salaryAccounts:salaryAccounts,
+      waiverRating:waiverRating,
+      applicationNumber: applicationNumber,
+    });
+  }
+
+  // Function to save the file to Firebase Storage
+  function saveFileToStorage(file, applicationNumber) {
+    var storageRef = firebase.storage().ref();
+    var fileRef = storageRef.child('supportingDocuments/' + applicationNumber + '/' + file.name);
+
+    fileRef.put(file).then(function (snapshot) {
+      console.log('File uploaded successfully:', snapshot);
+    }).catch(function (error) {
+      console.error('Error uploading file:', error);
+    });
+  }
+  function toggleAccountNumberField() {
+    var customerType = document.getElementById('customerType');
+    var accountNumberSection = document.getElementById('accountNumberSection');
+
+    // Check if the selected customer type is "Existing Customer"
+    if (customerType.value === 'Existing') {
+      // Show the "Account Number" field
+      accountNumberSection.style.display = 'block';
+    } else {
+      // Hide the "Account Number" field
+      accountNumberSection.style.display = 'none';
+    }
+  }
+  // Function to save the file to Firebase Storage and update the database
+  function saveFileToStorage(file, applicationNumber) {
+    var storageRef = firebase.storage().ref();
+    var fileRef = storageRef.child('supportingDocuments/' + applicationNumber + '/' + file.name);
+
+    fileRef.put(file).then(function (snapshot) {
+      console.log('File uploaded successfully:', snapshot);
+
+      // Get the file name
+      var fileName = file.name;
+
+      // Update the database with the file name
+      updateDatabaseWithFileName(applicationNumber, fileName);
+    }).catch(function (error) {
+      console.error('Error uploading file:', error);
+    });
+  }
+
+  // Function to update the database with the file name
+  function updateDatabaseWithFileName(applicationNumber, fileName) {
+    var messagesRef = firebase.database().ref('Contact form Data');
+    var applicationRef = messagesRef.child(applicationNumber);
+
+    // Update the 'fileName' property in the database
+    applicationRef.update({
+      fileName: fileName
+    });
+
+    console.log('File name added to the database:', fileName);
+  }
+</script>
 </body>
 </html>
