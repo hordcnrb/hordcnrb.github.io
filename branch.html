@@ -1,175 +1,170 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Form</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="styles.css"/>
 </head>
 
 <body>
-  <div class="wrapper">
+<div class="wrapper">
     <header>CANARA EASY FEE</header>
 
     <form id="applicationForm">
-      <!-- Institution Details -->
-      <h2>Institution Details</h2>
-      <!-- New or Existing Customer -->
-      <div class="form-section">
-        <label for="customerType">New or Existing Customer:</label>
-        <select id="customerType" name="customerType" class="styled-input" onchange="toggleAccountNumberField()">
-          <option value="New">New Customer</option>
-          <option value="Existing">Existing Customer</option>
+        <h2>Institution Details</h2>
+
+        <!-- New or Existing Customer -->
+        <div class="form-section">
+            <label for="customerType">New or Existing Customer:</label>
+            <select id="customerType" name="customerType" class="styled-input"
+                    onchange="toggleAccountNumberField()">
+                <option value="New">New Customer</option>
+                <option value="Existing">Existing Customer</option>
+            </select>
+        </div>
+
+        <!-- Account Number (visible when "Existing Customer" is selected) -->
+        <div class="form-section" id="accountNumberSection" style="display:none;">
+            <label for="accountNumber">Account Number:</label>
+            <input type="text" id="accountNumber" name="accountNumber" class="styled-input"/>
+        </div>
+
+        <label for="schoolName">1. Name of School/College:</label>
+        <input type="text" id="schoolName" name="schoolName" required/>
+
+        <label for="tradingName">Constitution of applicant::</label>
+        <input type="text" id="trading" name="tradingName"/>
+
+        <label for="address">3. Address of Registered Office and Corporate Office:</label>
+        <textarea id="address" name="address" required></textarea>
+
+        <!-- Add more fields for Contact Details, Website, Date of Incorporation, PAN, etc. -->
+
+        <!-- 4. Number of Years of Existence -->
+        <label for="yearsOfExistence">4. Number of Years of Existence:</label>
+        <input type="number" id="yearsOfExistence" name="yearsOfExistence"/>
+
+        <!-- 5. GST Number -->
+        <label for="gstNumber">5. GST Number (if available):</label>
+        <input type="text" id="gstNumber" name="gstNumber"/>
+
+        <!-- 6. Number of Students Enrolled at Present -->
+        <label for="studentsEnrolled">6. Number of Students Enrolled at Present:</label>
+        <input type="number" id="studentsEnrolled" name="studentsEnrolled"/>
+
+        <!-- 7. Frequency of Fees/Transaction -->
+        <label for="feeFrequency">7. Frequency of Fees/Transaction:</label>
+        <select id="feeFrequency" name="feeFrequency">
+            <option value="Monthly">Monthly</option>
+            <option value="Quarterly">Quarterly</option>
+            <option value="HalfYearly">Half Yearly</option>
+            <option value="Yearly">Yearly</option>
         </select>
-      </div>
-      <!-- Account Number (visible when "Existing Customer" is selected) -->
-      <div class="form-section" id="accountNumberSection" style="display:none;">
-        <label for="accountNumber">Account Number:</label>
-        <input type="text" id="accountNumber" name="accountNumber" class="styled-input" />
-      </div>
-      <label for="schoolName">1. Name of School/College:</label>
-      <input type="text" id="schoolName" name="schoolName" required />
 
-      <label for="tradingName">Constitution of applicant::</label>
-      <input type="text" id="trading" name="tradingName" />
+        <!-- 8. Present Arrangement of Fees -->
+        <label for="feeArrangement">8. Present Arrangement of Fees:</label>
+        <textarea id="feeArrangement" name="feeArrangement"></textarea>
 
-      <label for="address">3. Address of Registered Office and Corporate Office:</label>
-      <textarea id="address" name="address" required></textarea>
+        <h3>7. Existing Business</h3>
 
-      <!-- Add more fields for Contact Details, Website, Date of Incorporation, PAN, etc. -->
+        <!-- Subheading Boxes -->
+        <label for="avgCasa">a. Avg CASA:</label>
+        <input type="text" id="avgCasa" name="avgCasa"/>
+        <label for="deposit">b. Deposit:</label>
+        <input type="text" id="deposit" name="deposit"/>
+        <label for="advances">c. Advances:</label>
+        <input type="text" id="advances" name="advances"/>
+        <label for="others1">d. Others:</label>
+        <input type="text" id="others1" name="others1"/>
 
-      <!-- 4. Number of Years of Existence -->
-      <label for="yearsOfExistence">4. Number of Years of Existence:</label>
-      <input type="number" id="yearsOfExistence" name="yearsOfExistence" />
+        <h3>8. Additional Business</h3>
 
-      <!-- 5. GST Number -->
-      <label for="gstNumber">5. GST Number (if available):</label>
-      <input type="text" id="gstNumber" name="gstNumber" />
+        <!-- Subheading Boxes -->
+        <label for="avgCasaAdditional">a. Avg CASA:</label>
+        <input type="text" id="avgCasaAdditional" name="avgCasaAdditional"/>
+        <label for="depositAdditional">b. Deposit:</label>
+        <input type="text" id="depositAdditional" name="depositAdditional"/>
+        <label for="advancesAdditional">c. Advances:</label>
+        <input type="text" id="advancesAdditional" name="advancesAdditional"/>
+        <label for="others2">d. Others:</label>
+        <input type="text" id="others2" name="others2"/>
 
-      <!-- 6. Number of Students Enrolled at Present -->
-      <label for="studentsEnrolled">6. Number of Students Enrolled at Present:</label>
-      <input type="number" id="studentsEnrolled" name="studentsEnrolled" />
+        <!-- 5. Number of Expected New Enrollments -->
+        <div class="form-section">
+            <label for="expectedEnrollments">5. Number of Expected New Enrollments:</label>
+            <input type="number" id="expectedEnrollments" name="expectedEnrollments" class="styled-input"/>
+        </div>
 
-      <!-- 7. Frequency of Fees/Transaction -->
-      <label for="feeFrequency">7. Frequency of Fees/Transaction:</label>
-      <select id="feeFrequency" name="feeFrequency">
-        <option value="Monthly">Monthly</option>
-        <option value="Quarterly">Quarterly</option>
-        <option value="HalfYearly">Half Yearly</option>
-        <option value="Yearly">Yearly</option>
-      </select>
+        <!-- 6. Approximate Fee Collection during this FY -->
+        <div class="form-section">
+            <label for="feeCollection">6. Approximate Fee Collection during this FY:</label>
+            <input type="text" id="feeCollection" name="feeCollection" class="styled-input"/>
+        </div>
 
-      <!-- 8. Present Arrangement of Fees -->
-      <label for="feeArrangement">8. Present Arrangement of Fees:</label>
-      <textarea id="feeArrangement" name="feeArrangement"></textarea>
+        <!-- 6. Whether requested for waiver or concession -->
+        <div class="form-section">
+            <label for="waiverRequested">6. Whether requested for waiver or concession:</label>
+            <select id="waiverRequested" name="waiverRequested" class="styled-input">
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+            </select>
+        </div>
 
-      <!-- 9. Existing Business -->
-      <h3>7. Existing Business</h3>
+        <!-- 7. If yes, percentage of waiver requested -->
+        <div class="form-section">
+            <label for="waiverPercentage">7. If yes, percentage of waiver requested:</label>
+            <input type="number" id="waiverPercentage" name="waiverPercentage" class="styled-input"/>
+        </div>
 
-      <!-- Subheading Boxes -->
-      <label for="avgCasa">a. Avg CASA:</label>
-      <input type="text" id="avgCasa" name="avgCasa" />
+        <!-- 8. Expected salary accounts of staff -->
+        <div class="form-section">
+            <label for="salaryAccounts">8. Expected salary accounts of staff:</label>
+            <input type="text" id="salaryAccounts" name="salaryAccounts" class="styled-input"/>
+        </div>
 
-      <label for="deposit">b. Deposit:</label>
-      <input type="text" id="deposit" name="deposit" />
+        <!-- 9. CIC Score -->
+        <div class="form-section">
+            <label for="cicScore">9. CIC Score:</label>
+            <input type="number" id="cicScore" name="cicScore" class="styled-input"/>
+        </div>
 
-      <label for="advances">c. Advances:</label>
-      <input type="text" id="advances" name="advances" />
+        <!-- 10. Rating score for Waiver -->
+        <div class="form-section">
+            <label for="waiverRating">10. Rating score for Waiver:</label>
+            <input type="number" id="waiverRating" name="waiverRating" class="styled-input"/>
+        </div>
 
-      <label for="others1">d. Others:</label>
-      <input type="text" id="others1" name="others1" />
+        <!-- 11. Whether application has been submitted in full -->
+        <div class="form-section">
+            <label for="applicationSubmitted">11. Whether application has been submitted in full:</label>
+            <input type="checkbox" id="applicationSubmitted" name="applicationSubmitted" class="styled-input"/>
+        </div>
 
-      <!-- 10. Additional Business -->
-      <h3>8. Additional Business</h3>
-
-      <!-- Subheading Boxes -->
-      <label for="avgCasaAdditional">a. Avg CASA:</label>
-      <input type="text" id="avgCasaAdditional" name="avgCasaAdditional" />
-
-      <label for="depositAdditional">b. Deposit:</label>
-      <input type="text" id="depositAdditional" name="depositAdditional" />
-
-      <label for="advancesAdditional">c. Advances:</label>
-      <input type="text" id="advancesAdditional" name="advancesAdditional" />
-
-      <label for="others2">d. Others:</label>
-      <input type="text" id="others2" name="others2" />
-
-      <!-- 5. Number of Expected New Enrollments -->
-      <div class="form-section">
-        <label for="expectedEnrollments">5. Number of Expected New Enrollments:</label>
-        <input type="number" id="expectedEnrollments" name="expectedEnrollments" class="styled-input" />
-      </div>
-
-      <!-- 6. Approximate Fee Collection during this FY -->
-      <div class="form-section">
-        <label for="feeCollection">6. Approximate Fee Collection during this FY:</label>
-        <input type="text" id="feeCollection" name="feeCollection" class="styled-input" />
-      </div>
-
-      <!-- 6. Whether requested for waiver or concession -->
-      <div class="form-section">
-        <label for="waiverRequested">6. Whether requested for waiver or concession:</label>
-        <select id="waiverRequested" name="waiverRequested" class="styled-input">
-          <option value="No">No</option>
-          <option value="Yes">Yes</option>
-        </select>
-      </div>
-
-      <!-- 7. If yes, percentage of waiver requested -->
-      <div class="form-section">
-        <label for="waiverPercentage">7. If yes, percentage of waiver requested:</label>
-        <input type="number" id="waiverPercentage" name="waiverPercentage" class="styled-input" />
-      </div>
-
-      <!-- 8. Expected salary accounts of staff -->
-      <div class="form-section">
-        <label for="salaryAccounts">8. Expected salary accounts of staff:</label>
-        <input type="text" id="salaryAccounts" name="salaryAccounts" class="styled-input" />
-      </div>
-
-      <!-- 9. CIC Score -->
-      <div class="form-section">
-        <label for="cicScore">9. CIC Score:</label>
-        <input type="number" id="cicScore" name="cicScore" class="styled-input" />
-      </div>
-
-      <!-- 10. Rating score for Waiver -->
-      <div class="form-section">
-        <label for="waiverRating">10. Rating score for Waiver:</label>
-        <input type="number" id="waiverRating" name="waiverRating" class="styled-input" />
-      </div>
-      <!-- 11. Whether application has been submitted in full -->
-      <div class="form-section">
-        <label for="applicationSubmitted">11. Whether application has been submitted in full:</label>
-        <input type="checkbox" id="applicationSubmitted" name="applicationSubmitted" class="styled-input" />
-      </div>
-      <!-- Add more fields for other services -->
-      <label for="fileInput">Upload Supporting Document:</label>
-      <input type="file" id="fileInput" name="supportingDocument" />
-      <button type="submit">Submit </button>
+        <!-- Add more fields for other services -->
+        <label for="fileInput">Upload Supporting Document:</label>
+        <input type="file" id="fileInput" name="supportingDocument"/>
+        <button type="submit">Submit</button>
     </form>
-  </div>
+</div>
 
-  <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
 
-  <script>
+<script>
     // Firebase initialization
     const firebaseConfig = {
-      apiKey: "AIzaSyA7XRIIWZaWoK1dNVtaaTBCna4nqDszW00",
-      authDomain: "hord1-11455.firebaseapp.com",
-      databaseURL: "https://hord1-11455-default-rtdb.firebaseio.com",
-      projectId: "hord1-11455",
-      storageBucket: "hord1-11455.appspot.com",
-      messagingSenderId: "793882034504",
-      appId: "1:793882034504:web:425d20c508ee426360f37d",
-      measurementId: "G-YS99WT22ZH",
+        apiKey: "AIzaSyA7XRIIWZaWoK1dNVtaaTBCna4nqDszW00",
+        authDomain: "hord1-11455.firebaseapp.com",
+        databaseURL: "https://hord1-11455-default-rtdb.firebaseio.com",
+        projectId: "hord1-11455",
+        storageBucket: "hord1-11455.appspot.com",
+        messagingSenderId: "793882034504",
+        appId: "1:793882034504:web:425d20c508ee426360f37d",
+        measurementId: "G-YS99WT22ZH",
     };
 
     firebase.initializeApp(firebaseConfig);
@@ -182,200 +177,200 @@
 
     // Function to handle form submission
     function submitForm(e) {
-      e.preventDefault();
+        e.preventDefault();
 
-      // Get form input values
-      const schoolName = getInputVal('schoolName');
-      const accountNumber = getInputVal('accountNumber');
-      const tradingName = getInputVal('accountNumber');
-      const address = getInputVal('address');
-      const yearsOfExistence = getInputVal('yearsOfExistence');
-      const gstNumber = getInputVal('gstNumber');
-      const studentsEnrolled = getInputVal('studentsEnrolled');
-      const feeFrequency = getInputVal('feeFrequency');
-      const feeArrangement = getInputVal('feeArrangement');
-      const avgCasa = getInputVal('avgCasa');
-      const deposit = getInputVal('deposit');
-      const advances = getInputVal('advances');
-      const others1 = getInputVal('others1');
-      const avgCasaAdditional = getInputVal('avgCasaAdditional');
-      const depositAdditional = getInputVal('depositAdditional');
-      const advancesAdditional = getInputVal('advancesAdditional');
-      const others2 = getInputVal('others2');
-      const expectedEnrollments = getInputVal('expectedEnrollments');
-      const feeCollection = getInputVal('feeCollection');
-      const waiverRequested = getInputVal('waiverRequested');
-      const waiverPercentage = getInputVal('waiverPercentage');
-      const cicScore = getInputVal('cicScore');
-      const salaryAccounts = getInputVal('salaryAccounts');
-      const waiverRating = getInputVal('waiverRating');
-      const applicationSubmitted = document.getElementById('applicationSubmitted').checked;
+        // Get form input values
+        const schoolName = getInputVal('schoolName');
+        const accountNumber = getInputVal('accountNumber');
+        const tradingName = getInputVal('accountNumber');
+        const address = getInputVal('address');
+        const yearsOfExistence = getInputVal('yearsOfExistence');
+        const gstNumber = getInputVal('gstNumber');
+        const studentsEnrolled = getInputVal('studentsEnrolled');
+        const feeFrequency = getInputVal('feeFrequency');
+        const feeArrangement = getInputVal('feeArrangement');
+        const avgCasa = getInputVal('avgCasa');
+        const deposit = getInputVal('deposit');
+        const advances = getInputVal('advances');
+        const others1 = getInputVal('others1');
+        const avgCasaAdditional = getInputVal('avgCasaAdditional');
+        const depositAdditional = getInputVal('depositAdditional');
+        const advancesAdditional = getInputVal('advancesAdditional');
+        const others2 = getInputVal('others2');
+        const expectedEnrollments = getInputVal('expectedEnrollments');
+        const feeCollection = getInputVal('feeCollection');
+        const waiverRequested = getInputVal('waiverRequested');
+        const waiverPercentage = getInputVal('waiverPercentage');
+        const cicScore = getInputVal('cicScore');
+        const salaryAccounts = getInputVal('salaryAccounts');
+        const waiverRating = getInputVal('waiverRating');
+        const applicationSubmitted = document.getElementById('applicationSubmitted').checked;
 
-      // Get the file input element and the file
-      const fileInput = document.getElementById('fileInput');
-      const supportingDocument = fileInput.files[0];
+        // Get the file input element and the file
+        const fileInput = document.getElementById('fileInput');
+        const supportingDocument = fileInput.files[0];
 
-      // Check if a file is selected
-      if (supportingDocument) {
-        // Check if the file size is less than 5MB
-        if (supportingDocument.size <= 5 * 1024 * 1024) {
-          // Generate a unique application number
-          const applicationNumber = generateApplicationNumber();
+        // Check if a file is selected
+        if (supportingDocument) {
+            // Check if the file size is less than 5MB
+            if (supportingDocument.size <= 5 * 1024 * 1024) {
+                // Generate a unique application number
+                const applicationNumber = generateApplicationNumber();
 
-          // Save form data to the Firebase database
-          saveMessage(
-            schoolName,
-            accountNumber,
-            tradingName,
-            address,
-            yearsOfExistence,
-            gstNumber,
-            studentsEnrolled,
-            feeFrequency,
-            feeArrangement,
-            avgCasa,
-            deposit,
-            advances,
-            others1,
-            avgCasaAdditional,
-            depositAdditional,
-            others2,
-            expectedEnrollments,
-            feeCollection,
-            waiverRequested,
-            waiverPercentage,
-            cicScore,
-            salaryAccounts,
-            waiverRating,
-            applicationNumber,
-            applicationSubmitted
-          );
+                // Save form data to the Firebase database
+                saveMessage(
+                    schoolName,
+                    accountNumber,
+                    tradingName,
+                    address,
+                    yearsOfExistence,
+                    gstNumber,
+                    studentsEnrolled,
+                    feeFrequency,
+                    feeArrangement,
+                    avgCasa,
+                    deposit,
+                    advances,
+                    others1,
+                    avgCasaAdditional,
+                    depositAdditional,
+                    others2,
+                    expectedEnrollments,
+                    feeCollection,
+                    waiverRequested,
+                    waiverPercentage,
+                    cicScore,
+                    salaryAccounts,
+                    waiverRating,
+                    applicationNumber,
+                    applicationSubmitted
+                );
 
-          // Save the file to Firebase Storage
-          saveFileToStorage(supportingDocument, applicationNumber);
+                // Save the file to Firebase Storage
+                saveFileToStorage(supportingDocument, applicationNumber);
 
-          // Display success message with application number
-          alert('Successfully submitted! Your application number is: ' + applicationNumber);
+                // Display success message with application number
+                alert('Successfully submitted! Your application number is: ' + applicationNumber);
 
-          // Reset the form after submission
-          document.getElementById('applicationForm').reset();
+                // Reset the form after submission
+                document.getElementById('applicationForm').reset();
+            } else {
+                // Display error message for exceeding file size limit
+                alert('Error: The selected file exceeds the maximum size of 5MB.');
+            }
         } else {
-          // Display error message for exceeding file size limit
-          alert('Error: The selected file exceeds the maximum size of 5MB.');
+            // Display error message for not selecting a file
+            alert('Error: Please select a PDF file.');
         }
-      } else {
-        // Display error message for not selecting a file
-        alert('Error: Please select a PDF file.');
-      }
     }
 
     // Function to generate a unique application number
     function generateApplicationNumber() {
-      return 'APP' + Math.floor(Math.random() * 10000);
+        return 'APP' + Math.floor(Math.random() * 10000);
     }
 
     // Function to get input values by element ID
     function getInputVal(id) {
-      return document.getElementById(id).value;
+        return document.getElementById(id).value;
     }
 
     // Function to save form data to the Firebase database
     function saveMessage(
-      schoolName,
-      accountNumber,
-      tradingName,
-      address,
-      yearsOfExistence,
-      gstNumber,
-      studentsEnrolled,
-      feeFrequency,
-      feeArrangement,
-      avgCasa,
-      deposit,
-      advances,
-      others1,
-      avgCasaAdditional,
-      depositAdditional,
-      others2,
-      expectedEnrollments,
-      feeCollection,
-      waiverRequested,
-      waiverPercentage,
-      cicScore,
-      salaryAccounts,
-      waiverRating,
-      applicationNumber,
-      applicationSubmitted
+        schoolName,
+        accountNumber,
+        tradingName,
+        address,
+        yearsOfExistence,
+        gstNumber,
+        studentsEnrolled,
+        feeFrequency,
+        feeArrangement,
+        avgCasa,
+        deposit,
+        advances,
+        others1,
+        avgCasaAdditional,
+        depositAdditional,
+        others2,
+        expectedEnrollments,
+        feeCollection,
+        waiverRequested,
+        waiverPercentage,
+        cicScore,
+        salaryAccounts,
+        waiverRating,
+        applicationNumber,
+        applicationSubmitted
     ) {
-      const newMessageRef = messagesRef.push();
-      newMessageRef.set({
-        schoolName: schoolName,
-        accountNumber: accountNumber,
-        tradingName: tradingName,
-        address: address,
-        yearsOfExistence: yearsOfExistence,
-        gstNumber: gstNumber,
-        studentsEnrolled: studentsEnrolled,
-        feeFrequency: feeFrequency,
-        feeArrangement: feeArrangement,
-        avgCasa: avgCasa,
-        deposit: deposit,
-        advances: advances,
-        others1: others1,
-        avgCasaAdditional: avgCasaAdditional,
-        depositAdditional: depositAdditional,
-        advancesAdditional: advancesAdditional,
-        others2: others2,
-        expectedEnrollments: expectedEnrollments,
-        feeCollection: feeCollection,
-        waiverRequested: waiverRequested,
-        waiverPercentage: waiverPercentage,
-        cicScore: cicScore,
-        salaryAccounts: salaryAccounts,
-        waiverRating: waiverRating,
-        applicationNumber: applicationNumber,
-        applicationSubmitted: applicationSubmitted,
-      });
+        const newMessageRef = messagesRef.push();
+        newMessageRef.set({
+            schoolName: schoolName,
+            accountNumber: accountNumber,
+            tradingName: tradingName,
+            address: address,
+            yearsOfExistence: yearsOfExistence,
+            gstNumber: gstNumber,
+            studentsEnrolled: studentsEnrolled,
+            feeFrequency: feeFrequency,
+            feeArrangement: feeArrangement,
+            avgCasa: avgCasa,
+            deposit: deposit,
+            advances: advances,
+            others1: others1,
+            avgCasaAdditional: avgCasaAdditional,
+            depositAdditional: depositAdditional,
+            advancesAdditional: advancesAdditional,
+            others2: others2,
+            expectedEnrollments: expectedEnrollments,
+            feeCollection: feeCollection,
+            waiverRequested: waiverRequested,
+            waiverPercentage: waiverPercentage,
+            cicScore: cicScore,
+            salaryAccounts: salaryAccounts,
+            waiverRating: waiverRating,
+            applicationNumber: applicationNumber,
+            applicationSubmitted: applicationSubmitted,
+        });
     }
 
     // Function to save the file to Firebase Storage and update the database
     function saveFileToStorage(file, applicationNumber) {
-      const storageRef = firebase.storage().ref();
-      const fileRef = storageRef.child('supportingDocuments/' + applicationNumber + '/' + file.name);
+        const storageRef = firebase.storage().ref();
+        const fileRef = storageRef.child('supportingDocuments/' + applicationNumber + '/' + file.name);
 
-      fileRef.put(file).then(function (snapshot) {
-        console.log('File uploaded successfully:', snapshot);
+        fileRef.put(file).then(function (snapshot) {
+            console.log('File uploaded successfully:', snapshot);
 
-        // Get the file name
-        const fileName = file.name;
+            // Get the file name
+            const fileName = file.name;
 
-        // Get the download URL of the uploaded file
-        fileRef.getDownloadURL().then(function (downloadURL) {
-          console.log('File download URL:', downloadURL);
+            // Get the download URL of the uploaded file
+            fileRef.getDownloadURL().then(function (downloadURL) {
+                console.log('File download URL:', downloadURL);
 
-          // Now you can update the database with the file details
-          updateDatabaseWithFileDetails(applicationNumber, fileName, downloadURL);
+                // Now you can update the database with the file details
+                updateDatabaseWithFileDetails(applicationNumber, fileName, downloadURL);
+            }).catch(function (error) {
+                console.error('Error getting download URL:', error);
+            });
         }).catch(function (error) {
-          console.error('Error getting download URL:', error);
+            console.error('Error uploading file:', error);
         });
-      }).catch(function (error) {
-        console.error('Error uploading file:', error);
-      });
     }
 
     // Function to update the database with the file name and file download URL
     function updateDatabaseWithFileDetails(applicationNumber, fileName, fileDownloadURL) {
-      const messagesRef = firebase.database().ref('Institution Data');
-      const applicationRef = messagesRef.child(applicationNumber);
+        const messagesRef = firebase.database().ref('Institution Data');
+        const applicationRef = messagesRef.child(applicationNumber);
 
-      // Update the 'fileName' and 'fileDownloadURL' properties in the database
-      applicationRef.update({
-        fileName: fileName,
-        fileDownloadURL: fileDownloadURL
-      });
+        // Update the 'fileName' and 'fileDownloadURL' properties in the database
+        applicationRef.update({
+            fileName: fileName,
+            fileDownloadURL: fileDownloadURL
+        });
 
-      console.log('File name and download URL added to the database:', fileName, fileDownloadURL);
+        console.log('File name and download URL added to the database:', fileName, fileDownloadURL);
     }
-  </script>
+</script>
 </body>
 </html>
