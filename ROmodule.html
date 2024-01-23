@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,6 +71,7 @@
           if (detailsSnapshot.exists()) {
             var details = detailsSnapshot.val();
 
+
             // Hide the existing table content
             $('.form-container').html('');
 
@@ -95,35 +97,75 @@ var waiverRequested = details[Object.keys(details)[0]].waiverRequested;
 var cicScore = details[Object.keys(details)[0]].cicScore;
 var salaryAccounts = details[Object.keys(details)[0]].salaryAccounts;
 var waiverRating = details[Object.keys(details)[0]].waiverRating;
+var Risk1 = details[Object.keys(details)[0]].Risk1;
+var Risk2 = details[Object.keys(details)[0]].Risk2;
+var Risk3 = details[Object.keys(details)[0]].Risk3;
+var Risk4 = details[Object.keys(details)[0]].Risk4;
+var Risk5 = details[Object.keys(details)[0]].Risk5;
+var Risk6 = details[Object.keys(details)[0]].Risk6;
+var Risk7 = details[Object.keys(details)[0]].Risk7;
+var Risk8 = details[Object.keys(details)[0]].Risk8;
+var Risk9 = details[Object.keys(details)[0]].Risk9;
+var Risk10 = details[Object.keys(details)[0]].Risk10;
+var Risk11 = details[Object.keys(details)[0]].Risk11;
 var applicationNumber = details[Object.keys(details)[0]].applicationNumber;
 
 
 
           
-           // Display the details with specific field names
-            var detailsContent = '<div>';
-            detailsContent += '<p><strong>Application Number:</strong> ' + applicationNumber + '</p>';
-            detailsContent += '<p><strong>Institution Name:</strong> ' + schoolName + '</p>';
-            detailsContent += '<p><strong>Address:</strong> ' + address + '</p>';
-            detailsContent += '<p><strong>Years of Existence:</strong> ' + yearsOfExistence + '</p>';
-            detailsContent += '<p><strong>GST Number:</strong> ' + gstNumber + '</p>';
-detailsContent += '<p><strong>Students Enrolled:</strong> ' + studentsEnrolled + '</p>';
-detailsContent += '<p><strong>Fee Frequency:</strong> ' + feeFrequency + '</p>';
-detailsContent += '<p><strong>Fee Arrangement:</strong> ' + feeArrangement + '</p>';
-detailsContent += '<p><strong>Average CASA:</strong> ' + avgCasa + '</p>';
-detailsContent += '<p><strong>Deposit:</strong> ' + deposit + '</p>';
-detailsContent += '<p><strong>Advances:</strong> ' + advances + '</p>';
-detailsContent += '<p><strong>Others 1:</strong> ' + others1 + '</p>';
-detailsContent += '<p><strong>Average CASA Additional:</strong> ' + avgCasaAdditional + '</p>';
-detailsContent += '<p><strong>Deposit Additional:</strong> ' + depositAdditional + '</p>';
-detailsContent += '<p><strong>Advances Additional:</strong> ' + advancesAdditional + '</p>';
-detailsContent += '<p><strong>Others 2:</strong> ' + others2 + '</p>';
-detailsContent += '<p><strong>Expected Enrollments:</strong> ' + expectedEnrollments + '</p>';
-detailsContent += '<p><strong>Fee Collection:</strong> ' + feeCollection + '</p>';
-detailsContent += '<p><strong>Waiver Requested:</strong> ' + waiverRequested + '</p>';
-detailsContent += '<p><strong>CIC Score:</strong> ' + cicScore + '</p>';
-detailsContent += '<p><strong>Waiver Rating:</strong> ' + waiverRating + '</p>';
-detailsContent += '<p><strong>Expected Salary Accounts:</strong> ' + salaryAccounts + '</p>';
+          // Display the details in a table
+var detailsContent = '<table>';
+detailsContent += '<tr><td><strong>Application Number:</strong></td><td>' + applicationNumber + '</td></tr>';
+detailsContent += '<tr><td><strong>Institution Name:</strong></td><td>' + schoolName + '</td></tr>';
+detailsContent += '<tr><td><strong>Address:</strong></td><td>' + address + '</td></tr>';
+detailsContent += '<tr><td><strong>Years of Existence:</strong></td><td>' + yearsOfExistence + '</td></tr>';
+detailsContent += '<tr><td><strong>GST Number:</strong></td><td>' + gstNumber + '</td></tr>';
+detailsContent += '<tr><td><strong>Students Enrolled:</strong></td><td>' + studentsEnrolled + '</td></tr>';
+detailsContent += '<tr><td><strong>Fee Frequency:</strong></td><td>' + feeFrequency + '</td></tr>';
+detailsContent += '<tr><td><strong>Fee Arrangement:</strong></td><td>' + feeArrangement + '</td></tr>';
+detailsContent += '<tr><td><strong>Average CASA:</strong></td><td>' + avgCasa + '</td></tr>';
+detailsContent += '<tr><td><strong>Deposit:</strong></td><td>' + deposit + '</td></tr>';
+detailsContent += '<tr><td><strong>Advances:</strong></td><td>' + advances + '</td></tr>';
+detailsContent += '<tr><td><strong>Others 1:</strong></td><td>' + others1 + '</td></tr>';
+detailsContent += '<tr><td><strong>Average CASA Additional:</strong></td><td>' + avgCasaAdditional + '</td></tr>';
+detailsContent += '<tr><td><strong>Deposit Additional:</strong></td><td>' + depositAdditional + '</td></tr>';
+detailsContent += '<tr><td><strong>Advances Additional:</strong></td><td>' + advancesAdditional + '</td></tr>';
+detailsContent += '<tr><td><strong>Others 2:</strong></td><td>' + others2 + '</td></tr>';
+detailsContent += '<tr><td><strong>Expected Enrollments:</strong></td><td>' + expectedEnrollments + '</td></tr>';
+detailsContent += '<tr><td><strong>Fee Collection:</strong></td><td>' + feeCollection + '</td></tr>';
+detailsContent += '<tr><td><strong>Waiver Requested:</strong></td><td>' + waiverRequested + '</td></tr>';
+detailsContent += '<tr><td><strong>CIC Score:</strong></td><td>' + cicScore + '</td></tr>';
+detailsContent += '<tr><td><strong>Waiver Rating:</strong></td><td>' + waiverRating + '</td></tr>';
+detailsContent += '<tr><td><strong>Expected Salary Accounts:</strong></td><td> '+ salaryAccounts + '</td></tr>';
+detailsContent += '</table>';
+
+detailsContent += '<h2><strong>Risk Mitigation Measures - Checklist:</strong></h2>';
+
+
+
+detailsContent += '<table border="1">';
+detailsContent += '<tr><th>Risk Mitigation Measures</th><th>Compliance Status</th></tr>';
+detailsContent += '<tr><td>b. The Applicant Merchant should have a Current Account...</td><td>' + (Risk2 === 'on' ? 'Complied' : 'Not Complied') + '</td></tr>';
+detailsContent += '<tr><td>a. The Nature of Business of the customer for which the Payment Gateway Facility is sought should be thoroughly studied to ensure that the Requirement matches the Business Needs: <strong></td><td>' + (Risk1 === 'on' ? 'Complied' : 'Not Complied') + '</strong></td></tr>';            
+detailsContent += '<tr><td>b. The Applicant Merchant should have a Current Account (SB account allowed only in exceptional cases) or running accounts like OD/OCC accounts with the Bank, and the Settlement will be credited to the said account: <strong></td><td>' + (Risk2 === 'on' ? 'Complied' : 'Not Complied') + '</strong></td></tr>';
+detailsContent += '<tr><td>c. Merchant should have satisfactory dealing with our branch for a minimum period of one year. Where the applicant merchant is new, the Circle Head is empowered to permit the recommendation of the merchant on specific recommendations of the branch in-charge, justifying the proposal: <strong></td><td>' + (Risk3 === 'on' ? 'Complied' : 'Not Complied') + '</strong></td></tr>'; 
+detailsContent += '<tr><td>d. In respect of High-Risk Merchants, the condition of satisfactory dealing with our bank for a minimum of one year is mandatory and cannot be relaxed: <strong></td><td>' + (Risk4 === 'on' ? 'Complied' : 'Not Complied') + '</strong></td></tr>'; 
+detailsContent += '<tr><td>e. KYC to be verified: <strong></td><td>' + (Risk5 === 'on' ? 'Complied' : 'Not Complied') + '</strong></td></tr>'; 
+detailsContent += '<tr><td>f. Branches shall obtain the following documents while enrolling merchants, in case Branch has not collected these documents from the existing customer for any other purpose: Business license/registration copy (any of the following): GST registration, Municipal Corporation Registration, Others Government Registration (e.g., issued under shops & establishment Act, etc.), Certified IT Returns or Certified Advance Tax Challan or Certified Professional Tax Return application form for a government license acknowledged by the authority containing merchant name and address and a receipt of payment to the authority: <strong></td><td>' + (Risk6 === 'on' ? 'Complied' : 'Not Complied') + '</strong></td></tr>'; 
+detailsContent += '<tr><td>g.CIC SCORE: Branches shall draw CIR from CIC before recommending merchant and CIC Rating should be low/normal risk: <strong></td><td>' +(Risk7 === 'on' ? 'Complied' : 'Not Complied') + '</strong></td></tr>'; 
+detailsContent += '<tr><td>h. Circle office invariably shall verify the “negative verification report from VISA/MASTER network & NPCI (available online) before recommending the merchant’s name are not found in the list: <strong></td><td>' + (Risk8 === 'on' ? 'Complied' : 'Not Complied') + '</strong></td></tr>'; 
+detailsContent += '<tr><td>i. While recommending for usage of International Cards for accepting donations from foreign countries, Branches/Regional Office/Circle Offices to ensure that the concerned merchant has complied with the requirement of FEMA regulations like obtaining foreign contribution regulation act, 2010 (FCRA) registration number from the ministry of home affairs, GOI and ensuring the validity/periodical renewal of the same. All the precautions applicable for cross border remittances to be taken: <strong></td><td>' + (Risk9 === 'on' ? 'Complied' : 'Not Complied') + '</strong></td></tr>'; 
+detailsContent += '<tr><td>j. Utmost care to be taken before recommending facility to the accounts like TRUST accounts. For example, Branches/Regional offices/Circle Offices to ensure that the trust deed having the specific clause permitting the online collection facility and are solution to that effect is passed etc.: <strong></td><td>' + (Risk10 === 'on' ? 'Complied' : 'Not Complied') + '</strong></td></tr>';
+detailsContent += '<tr><td>k. In certain cases, as per the recommendations received from circle office, merchants are not ready to enter into Tripartite agreement with the aggregator, merchants will be willing to enter into agreement with the bank only. In such cases, the bank has to enter into an agreement with the aggregator and enter back-to-back agreement with the merchant covering all the terms and conditions of aggregator suitably. Such facilities to be recommended only in exceptional cases for high valued customers basing on the business support and benefits derived from the account: <strong></td><td>' + (Risk11 === 'on' ? 'Complied' : 'Not Complied') + '</strong></td></tr>';
+
+detailsContent += '</table>';
+
+
+
+
+
+detailsContent += '</br>';
+
 
             // Add "View Files" button
             detailsContent += '<p><strong>View:</strong> <a id="fileLink" href="javascript:void(0);" onclick="viewApplication(\'' + applicationNumber + '\')">View File</a></p>';
